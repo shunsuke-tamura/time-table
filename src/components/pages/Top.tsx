@@ -1,8 +1,9 @@
 import { TimeTable } from "../parts";
+import "./Top.css"
 
 const Top = () => {
   return (
-    <div>
+    <div className="topWraper">
       <TimeTable></TimeTable>
     </div>
   )

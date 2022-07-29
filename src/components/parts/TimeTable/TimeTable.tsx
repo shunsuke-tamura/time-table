@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 const TimeTable = () => {
   return (
-    <Table striped bordered hover>
+    <Table bordered>
       <thead>
         <tr>
           <th></th>
