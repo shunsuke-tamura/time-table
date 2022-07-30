@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import DetailModal from './DetailModal'
+
 import './Cell.css'
 
 type Props = {
@@ -5,12 +8,19 @@ type Props = {
 };
 
 const Cell = ({ subject }: Props) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
-    <div className="cell" onClick={() => {
-      console.log(subject);
-    }}>
-      {subject}
-    </div>
+    <>
+      <div className="cell" onClick={() => {
+        handleShow()
+      }}>
+        {subject}
+      </div>
+      <DetailModal show={show} handleClose={handleClose}></DetailModal>
+    </>
   )
 }
 
