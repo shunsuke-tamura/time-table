@@ -1,8 +1,20 @@
 import Cell from './Cell'
+import timeTableData from '../../../db/timeTable.json'
 
 import Table from 'react-bootstrap/Table';
 
+type timeTableDataType = {
+  1: string[];
+  2: string[];
+  3: string[];
+  4: string[];
+  5: string[];
+  6: string[];
+  7: string[];
+}
+
 const TimeTable = () => {
+  const data: timeTableDataType = timeTableData;
   return (
     <Table bordered>
       <thead>
@@ -20,53 +32,45 @@ const TimeTable = () => {
       <tbody>
         <tr>
           <th>1</th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
+          {data[1 as keyof timeTableDataType].map((value, idx) =>
+            <th key={idx}><Cell subject={value} key={idx}></Cell></th>
+          )}
         </tr>
         <tr>
           <th>2</th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
+          {data[2 as keyof timeTableDataType].map((value, idx) =>
+            <th key={idx}><Cell subject={value} key={idx}></Cell></th>
+          )}
         </tr>
         <tr>
           <th>3</th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
+          {data[3 as keyof timeTableDataType].map((value, idx) =>
+            <th key={idx}><Cell subject={value} key={idx}></Cell></th>
+          )}
         </tr>
         <tr>
           <th>4</th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
+          {data[4 as keyof timeTableDataType].map((value, idx) =>
+            <th key={idx}><Cell subject={value} key={idx}></Cell></th>
+          )}
         </tr>
         <tr>
           <th>5</th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
-          <th><Cell subject='国語'></Cell></th>
+          {data[5 as keyof timeTableDataType].map((value, idx) =>
+            <th key={idx}><Cell subject={value} key={idx}></Cell></th>
+          )}
+        </tr>
+        <tr>
+          <th>6</th>
+          {data[6 as keyof timeTableDataType].map((value, idx) =>
+            <th key={idx}><Cell subject={value} key={idx}></Cell></th>
+          )}
+        </tr>
+        <tr>
+          <th>7</th>
+          {data[7 as keyof timeTableDataType].map((value, idx) =>
+            <th key={idx}><Cell subject={value} key={idx}></Cell></th>
+          )}
         </tr>
       </tbody>
     </Table>

@@ -1,4 +1,6 @@
 .cell {
+  width: 100px;
+  height: 80px;
 }
 .cell:hover {
   background-color: rgb(56, 15, 222);
