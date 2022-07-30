@@ -8,13 +8,13 @@ const TimeTable = () => {
       <thead>
         <tr>
           <th></th>
-          <th><Cell subject='日'></Cell></th>
-          <th><Cell subject='月'></Cell></th>
-          <th><Cell subject='火'></Cell></th>
-          <th><Cell subject='水'></Cell></th>
-          <th><Cell subject='木'></Cell></th>
-          <th><Cell subject='金'></Cell></th>
-          <th><Cell subject='土'></Cell></th>
+          <th> 日 </th>
+          <th> 月 </th>
+          <th> 火 </th>
+          <th> 水 </th>
+          <th> 木 </th>
+          <th> 金 </th>
+          <th> 土 </th>
         </tr>
       </thead>
       <tbody>
