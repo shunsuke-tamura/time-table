@@ -3,22 +3,34 @@ import './ToDo.css'
 
 import Stack from 'react-bootstrap/Stack';
 
-const ToDo = () => {
-  const [checked, setChecked] = useState(false);
+export type ToDoType = {
+  id: string;
+  done: boolean;
+  content: string;
+  deadline: string;
+}
+
+type Props = {
+  todo: ToDoType;
+}
+
+const ToDo = ({ todo }: Props) => {
+  let [checked, setChecked] = useState(false);
+  checked = todo["done"]
   return (
     <Stack direction="horizontal" gap={3}>
       <label htmlFor="compleated">
         <input
           type="checkbox"
-          id="compleated"
-          name="compleated"
+          id={todo["id"]}
+          name={todo["id"]}
           checked={checked}
-          value={"id"}
+          value={todo["id"]}
           onChange={(e) => setChecked(e.currentTarget.checked)}
         ></input>
       </label>
-      <div>小テスト</div>
-      <div>(〆切: 12/31)</div>
+      <div>{todo["content"]}</div>
+      <div>(〆切: {todo["deadline"]})</div>
     </Stack>
   )
 }

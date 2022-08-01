@@ -1,16 +1,25 @@
 import ToDo from './ToDo';
-import './DetailModal.css'
+import { ToDoType } from './ToDo';
+import './DetailModal.css';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Stack from 'react-bootstrap/Stack';
 
+export type DetailType = {
+  subject: string;
+  room: string;
+  professor: string;
+  todos: ToDoType[];
+}
+
 type Props = {
   show: boolean;
   handleClose: VoidFunction;
+  detail: DetailType;
 };
 
-const DetailModal = ({ show, handleClose }: Props) => {
+const DetailModal = ({ show, handleClose, detail }: Props) => {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
@@ -28,10 +37,9 @@ const DetailModal = ({ show, handleClose }: Props) => {
         <Stack direction="horizontal" gap={4} style={{ alignItems: 'flexStart' }}>
           <h5>ToDo</h5>
           <Stack direction='vertical'>
-            <ToDo></ToDo>
-            <ToDo></ToDo>
-            <ToDo></ToDo>
-            <ToDo></ToDo>
+            {detail["todos"].map((value, _) => 
+              <ToDo todo={value} key={value["id"]}></ToDo>
+            )}
           </Stack>
         </Stack>
       </Modal.Body>
