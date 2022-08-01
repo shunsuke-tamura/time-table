@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import './Homework.css'
+import './ToDo.css'
 
 import Stack from 'react-bootstrap/Stack';
 
-const Homework = () => {
+const ToDo = () => {
   const [checked, setChecked] = useState(false);
   return (
     <Stack direction="horizontal" gap={3}>
@@ -23,4 +23,4 @@ const Homework = () => {
   )
 }
 
-export default Homework
+export default ToDo

@@ -1,4 +1,4 @@
-import Homework from './Homework';
+import ToDo from './ToDo';
 import './DetailModal.css'
 
 import Button from 'react-bootstrap/Button';
@@ -25,13 +25,13 @@ const DetailModal = ({ show, handleClose }: Props) => {
           <h5>教員</h5>
           <div>hogefuga</div>
         </Stack>
-        <Stack direction="horizontal" gap={5} style={{ alignItems: 'flexStart' }}>
-          <h5>課題</h5>
+        <Stack direction="horizontal" gap={4} style={{ alignItems: 'flexStart' }}>
+          <h5>ToDo</h5>
           <Stack direction='vertical'>
-            <Homework></Homework>
-            <Homework></Homework>
-            <Homework></Homework>
-            <Homework></Homework>
+            <ToDo></ToDo>
+            <ToDo></ToDo>
+            <ToDo></ToDo>
+            <ToDo></ToDo>
           </Stack>
         </Stack>
       </Modal.Body>
