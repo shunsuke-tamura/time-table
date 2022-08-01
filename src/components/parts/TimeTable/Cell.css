@@ -7,3 +7,8 @@
   color: #b3dbf5;
   cursor : pointer;
 }
+
+.nullcell {
+  width: 100px;
+  height: 80px;
+}

@@ -34,7 +34,7 @@ const DetailModal = ({ show, handleClose, detail }: Props) => {
           <h5>教員</h5>
           <div>hogefuga</div>
         </Stack>
-        <Stack direction="horizontal" gap={4} style={{ alignItems: 'flexStart' }}>
+        <Stack direction="horizontal" gap={4} className="todo">
           <h5>ToDo</h5>
           <Stack direction='vertical'>
             {detail["todos"].map((value, _) => 

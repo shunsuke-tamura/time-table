@@ -15,8 +15,7 @@ type Props = {
 }
 
 const ToDo = ({ todo }: Props) => {
-  let [checked, setChecked] = useState(false);
-  checked = todo["done"]
+  const [checked, setChecked] = useState(todo["done"]);
   return (
     <Stack direction="horizontal" gap={3}>
       <label htmlFor="compleated">
