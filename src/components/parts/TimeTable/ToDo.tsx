@@ -58,6 +58,14 @@ export const EditToDo = ({ todo, todos, setInputTodos }: EditProps) => {
     )
   }
 
+  const deleteTodo = () => {
+    const targetIdx: number = todos.findIndex((value) => value === todo)
+    console.log(targetIdx)
+    const after = [...todos]
+    after.splice(targetIdx, 1)
+    setInputTodos(after)
+  }
+
   return (
     <Stack direction="horizontal" gap={3}>
       <label htmlFor="compleated">
@@ -95,7 +103,7 @@ export const EditToDo = ({ todo, todos, setInputTodos }: EditProps) => {
         />
       </div>
       <div>
-        <BsFillTrashFill className='deleteButton'/>
+        <BsFillTrashFill className='deleteButton' onClick={deleteTodo}/>
       </div>
     </Stack>
   )
