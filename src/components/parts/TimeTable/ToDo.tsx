@@ -60,7 +60,6 @@ export const EditToDo = ({ todo, todos, setInputTodos }: EditProps) => {
 
   const deleteTodo = () => {
     const targetIdx: number = todos.findIndex((value) => value === todo)
-    console.log(targetIdx)
     const after = [...todos]
     after.splice(targetIdx, 1)
     setInputTodos(after)
