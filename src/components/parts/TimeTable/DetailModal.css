@@ -1,3 +1,19 @@
 .todo {
     align-items: flex-start;
 }
+.plusTodo {
+    margin: 5px auto 0 auto;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: blueviolet;
+    cursor: pointer;
+}
+.plusTodo:hover {
+    opacity: 50%;
+}
+
+.editButton {
+    /* margin-left: ; */
+}
