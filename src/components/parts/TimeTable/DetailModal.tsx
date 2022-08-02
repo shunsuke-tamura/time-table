@@ -29,6 +29,13 @@ type ModalProps = {
   setEdit: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+type EditModalProps = {
+  handleClose: VoidFunction;
+  detail: DetailType;
+  setEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setDetail: React.Dispatch<React.SetStateAction<DetailType>>;
+}
+
 const NormalModal = ({ handleClose, detail, setEdit }: ModalProps) => {
   return (
     <>
@@ -65,7 +72,7 @@ const NormalModal = ({ handleClose, detail, setEdit }: ModalProps) => {
   )
 }
 
-const EditModal = ({ handleClose, detail, setEdit }: ModalProps) => {
+const EditModal = ({ handleClose, detail, setEdit, setDetail }: EditModalProps) => {
   const [inputSubject, setInputSubject] = useState(detail["subject"])
   const [inputRoom, setInputRoom] = useState(detail["room"])
   const [inputProfessor, setInputProfessor] = useState(detail["professor"])
@@ -111,11 +118,11 @@ const EditModal = ({ handleClose, detail, setEdit }: ModalProps) => {
         <Stack direction="horizontal" gap={5} className="todo">
           <h5>ToDo</h5>
           <Stack direction='vertical'>
-            {inputValues["todos"].map((value, _) =>
-              <EditToDo todo={value} key={value["id"]}></EditToDo>
+            {inputTodos.map((value, _) =>
+              <EditToDo todo={value} todos={inputValues["todos"]} setInputTodos={setInputTodos} key={value["id"]}></EditToDo>
             )}
-            <BsFillPlusCircleFill 
-              className='plusTodo' 
+            <BsFillPlusCircleFill
+              className='plusTodo'
               onClick={() => {
                 const newTodo: ToDoType = {
                   id: "",
@@ -130,10 +137,16 @@ const EditModal = ({ handleClose, detail, setEdit }: ModalProps) => {
         </Stack>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
+        <Button variant="danger" onClick={() => setEdit(false)}>
+          Cancel
         </Button>
-        <Button variant="success" onClick={() => setEdit(false)}>
+        <Button
+          variant="success"
+          onClick={() => {
+            setEdit(false)
+            setDetail(inputValues)
+          }}
+        >
           Save <AiOutlineSave />
         </Button>
       </Modal.Footer>
@@ -144,6 +157,7 @@ const EditModal = ({ handleClose, detail, setEdit }: ModalProps) => {
 
 const DetailModal = ({ show, handleClose, detail }: Props) => {
   const [editMode, setEditMode] = useState(false)
+  const [Detail, setDetail] = useState(detail)
   const onClose = () => {
     handleClose();
     setEditMode(false);
@@ -151,8 +165,8 @@ const DetailModal = ({ show, handleClose, detail }: Props) => {
   return (
     <Modal show={show} onHide={onClose} centered>
       {editMode
-        ? <EditModal handleClose={onClose} detail={detail} setEdit={setEditMode}></EditModal>
-        : <NormalModal handleClose={onClose} detail={detail} setEdit={setEditMode}></NormalModal>
+        ? <EditModal handleClose={onClose} detail={Detail} setEdit={setEditMode} setDetail={setDetail}></EditModal>
+        : <NormalModal handleClose={onClose} detail={Detail} setEdit={setEditMode}></NormalModal>
       }
     </Modal>
   );

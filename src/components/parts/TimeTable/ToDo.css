@@ -2,3 +2,9 @@
   width: 30px;
   height: 30px;
 }
+.deleteButton {
+  cursor: pointer;
+}
+.deleteButton:hover {
+  opacity: 50%;
+}
