@@ -21,6 +21,7 @@ type Props = {
   show: boolean;
   handleClose: VoidFunction;
   detail: DetailType;
+  setSubject: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 type ModalProps = {
@@ -30,10 +31,10 @@ type ModalProps = {
 };
 
 type EditModalProps = {
-  handleClose: VoidFunction;
   detail: DetailType;
   setEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setDetail: React.Dispatch<React.SetStateAction<DetailType>>;
+  setSubject: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const NormalModal = ({ handleClose, detail, setEdit }: ModalProps) => {
@@ -72,7 +73,7 @@ const NormalModal = ({ handleClose, detail, setEdit }: ModalProps) => {
   )
 }
 
-const EditModal = ({ handleClose, detail, setEdit, setDetail }: EditModalProps) => {
+const EditModal = ({ detail, setEdit, setDetail, setSubject }: EditModalProps) => {
   const [inputSubject, setInputSubject] = useState(detail["subject"])
   const [inputRoom, setInputRoom] = useState(detail["room"])
   const [inputProfessor, setInputProfessor] = useState(detail["professor"])
@@ -147,6 +148,7 @@ const EditModal = ({ handleClose, detail, setEdit, setDetail }: EditModalProps) 
           onClick={() => {
             setEdit(false)
             setDetail(inputValues)
+            setSubject(inputValues["subject"])
           }}
         >
           Save <AiOutlineSave />
@@ -157,7 +159,7 @@ const EditModal = ({ handleClose, detail, setEdit, setDetail }: EditModalProps) 
 }
 
 
-const DetailModal = ({ show, handleClose, detail }: Props) => {
+const DetailModal = ({ show, handleClose, detail, setSubject }: Props) => {
   const [editMode, setEditMode] = useState(false)
   const [Detail, setDetail] = useState(detail)
   const onClose = () => {
@@ -167,7 +169,7 @@ const DetailModal = ({ show, handleClose, detail }: Props) => {
   return (
     <Modal show={show} onHide={onClose} centered>
       {editMode
-        ? <EditModal handleClose={onClose} detail={Detail} setEdit={setEditMode} setDetail={setDetail}></EditModal>
+        ? <EditModal detail={Detail} setEdit={setEditMode} setDetail={setDetail} setSubject={setSubject}></EditModal>
         : <NormalModal handleClose={onClose} detail={Detail} setEdit={setEditMode}></NormalModal>
       }
     </Modal>

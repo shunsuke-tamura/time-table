@@ -10,6 +10,7 @@ type Props = {
 };
 
 const Cell = ({ subject, detail }: Props) => {
+  const [Subject, setSubject] = useState(subject)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,10 +20,10 @@ const Cell = ({ subject, detail }: Props) => {
       <div className={subject ? "cell" : "nullcell"} onClick={() => {
         handleShow()
       }}>
-        {subject}
+        {Subject}
       </div>
       {detail && (
-        <DetailModal show={show} handleClose={handleClose} detail={detail}></DetailModal>
+        <DetailModal show={show} handleClose={handleClose} detail={detail} setSubject={setSubject}></DetailModal>
       )}
     </>
   )
