@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { BsFillTrashFill } from 'react-icons/bs'
 
 export type ToDoType = {
-  id: string;
+  id: number;
   done: boolean;
   content: string;
   deadline: string;
@@ -28,8 +28,8 @@ export const ToDo = ({ todo }: Props) => {
       <label htmlFor="compleated">
         <input
           type="checkbox"
-          id={todo["id"]}
-          name={todo["id"]}
+          id={String(todo["id"])}
+          name={String(todo["id"])}
           checked={todo["done"]}
           value={todo["id"]}
           onChange={() => todo["done"]}
@@ -63,8 +63,8 @@ export const EditToDo = ({ todo, todos, setInputTodos }: EditProps) => {
       <label htmlFor="compleated">
         <input
           type="checkbox"
-          id={todo["id"]}
-          name={todo["id"]}
+          id={String(todo["id"])}
+          name={String(todo["id"])}
           checked={inputDone}
           value={todo["id"]}
           onChange={(e) => {

@@ -6,37 +6,37 @@ import Table from 'react-bootstrap/Table';
 
 type timeTableDataType = {
   1: {
-    id: string;
+    id: number;
     subject: string | null;
     detail: DetailType | null;
   }[];
   2: {
-    id: string;
+    id: number;
     subject: string | null;
     detail: DetailType | null;
   }[];
   3: {
-    id: string;
+    id: number;
     subject: string | null;
     detail: DetailType | null;
   }[];
   4: {
-    id: string;
+    id: number;
     subject: string | null;
     detail: DetailType | null;
   }[];
   5: {
-    id: string;
+    id: number;
     subject: string | null;
     detail: DetailType | null;
   }[];
   6: {
-    id: string;
+    id: number;
     subject: string | null;
     detail: DetailType | null;
   }[];
   7: {
-    id: string;
+    id: number;
     subject: string | null;
     detail: DetailType | null;
   }[];

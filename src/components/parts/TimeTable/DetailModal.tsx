@@ -124,8 +124,10 @@ const EditModal = ({ handleClose, detail, setEdit, setDetail }: EditModalProps) 
             <BsFillPlusCircleFill
               className='plusTodo'
               onClick={() => {
+                const periodId: string = String(inputTodos[inputTodos.length - 1]["id"]).substring(0, 2)
+                const newId: string = String(Number(String(inputTodos[inputTodos.length - 1]["id"]).substring(2)) + 1)
                 const newTodo: ToDoType = {
-                  id: "",
+                  id: Number(periodId + newId),
                   done: false,
                   content: "",
                   deadline: ""
