@@ -20,6 +20,7 @@ export type DetailType = {
 type Props = {
   show: boolean;
   handleClose: VoidFunction;
+  periodId: number;
   detail: DetailType;
   setSubject: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -31,6 +32,7 @@ type ModalProps = {
 };
 
 type EditModalProps = {
+  periodId: number;
   detail: DetailType;
   setEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setDetail: React.Dispatch<React.SetStateAction<DetailType>>;
@@ -73,7 +75,7 @@ const NormalModal = ({ handleClose, detail, setEdit }: ModalProps) => {
   )
 }
 
-const EditModal = ({ detail, setEdit, setDetail, setSubject }: EditModalProps) => {
+const EditModal = ({periodId, detail, setEdit, setDetail, setSubject }: EditModalProps) => {
   const [inputSubject, setInputSubject] = useState(detail["subject"])
   const [inputRoom, setInputRoom] = useState(detail["room"])
   const [inputProfessor, setInputProfessor] = useState(detail["professor"])
@@ -125,10 +127,11 @@ const EditModal = ({ detail, setEdit, setDetail, setSubject }: EditModalProps) =
             <BsFillPlusCircleFill
               className='plusTodo'
               onClick={() => {
-                const periodId: string = String(inputTodos[inputTodos.length - 1]["id"]).substring(0, 2)
-                const newId: string = String(Number(String(inputTodos[inputTodos.length - 1]["id"]).substring(2)) + 1)
+                const newId: string = inputTodos.length != 0
+                  ? String(Number(String(inputTodos[inputTodos.length - 1]["id"]).substring(2)) + 1)
+                  : String(0)
                 const newTodo: ToDoType = {
-                  id: Number(periodId + newId),
+                  id: Number(String(periodId) + newId),
                   done: false,
                   content: "",
                   deadline: ""
@@ -159,7 +162,7 @@ const EditModal = ({ detail, setEdit, setDetail, setSubject }: EditModalProps) =
 }
 
 
-const DetailModal = ({ show, handleClose, detail, setSubject }: Props) => {
+const DetailModal = ({ show, handleClose, periodId, detail, setSubject }: Props) => {
   const [editMode, setEditMode] = useState(false)
   const [Detail, setDetail] = useState(detail)
   const onClose = () => {
@@ -169,7 +172,7 @@ const DetailModal = ({ show, handleClose, detail, setSubject }: Props) => {
   return (
     <Modal show={show} onHide={onClose} centered>
       {editMode
-        ? <EditModal detail={Detail} setEdit={setEditMode} setDetail={setDetail} setSubject={setSubject}></EditModal>
+        ? <EditModal periodId={periodId} detail={Detail} setEdit={setEditMode} setDetail={setDetail} setSubject={setSubject}></EditModal>
         : <NormalModal handleClose={onClose} detail={Detail} setEdit={setEditMode}></NormalModal>
       }
     </Modal>

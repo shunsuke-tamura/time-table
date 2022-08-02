@@ -62,43 +62,43 @@ const TimeTable = () => {
         <tr>
           <th>1</th>
           {data[1 as keyof timeTableDataType].map((value, _) =>
-            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} periodId={value["id"]} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>2</th>
           {data[2 as keyof timeTableDataType].map((value, _) =>
-            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} periodId={value["id"]} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>3</th>
           {data[3 as keyof timeTableDataType].map((value, _) =>
-            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} periodId={value["id"]} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>4</th>
           {data[4 as keyof timeTableDataType].map((value, _) =>
-            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} periodId={value["id"]} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>5</th>
           {data[5 as keyof timeTableDataType].map((value, _) =>
-            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} periodId={value["id"]} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>6</th>
           {data[6 as keyof timeTableDataType].map((value, _) =>
-            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} periodId={value["id"]} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>7</th>
           {data[7 as keyof timeTableDataType].map((value, _) =>
-            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell subject={value["subject"]} detail={value["detail"]} periodId={value["id"]} key={value["id"]}></Cell></th>
           )}
         </tr>
       </tbody>

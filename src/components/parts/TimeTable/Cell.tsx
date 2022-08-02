@@ -7,9 +7,10 @@ import './Cell.css'
 type Props = {
   subject: string;
   detail: DetailType;
+  periodId: number;
 };
 
-const Cell = ({ subject, detail }: Props) => {
+const Cell = ({ subject, detail, periodId }: Props) => {
   const [Subject, setSubject] = useState(subject)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -22,7 +23,7 @@ const Cell = ({ subject, detail }: Props) => {
       }}>
         {Subject}
       </div>
-      <DetailModal show={show} handleClose={handleClose} detail={detail} setSubject={setSubject}></DetailModal>
+      <DetailModal show={show} handleClose={handleClose} periodId={periodId} detail={detail} setSubject={setSubject}></DetailModal>
     </>
   )
 }
