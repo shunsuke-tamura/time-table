@@ -5,8 +5,8 @@ import { DetailType } from './DetailModal';
 import './Cell.css'
 
 type Props = {
-  subject: string | null;
-  detail: DetailType | null;
+  subject: string;
+  detail: DetailType;
 };
 
 const Cell = ({ subject, detail }: Props) => {
@@ -17,14 +17,12 @@ const Cell = ({ subject, detail }: Props) => {
 
   return (
     <>
-      <div className={subject ? "cell" : "nullcell"} onClick={() => {
+      <div className="cell" onClick={() => {
         handleShow()
       }}>
         {Subject}
       </div>
-      {detail && (
-        <DetailModal show={show} handleClose={handleClose} detail={detail} setSubject={setSubject}></DetailModal>
-      )}
+      <DetailModal show={show} handleClose={handleClose} detail={detail} setSubject={setSubject}></DetailModal>
     </>
   )
 }

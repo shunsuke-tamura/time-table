@@ -21,7 +21,7 @@ type Props = {
   show: boolean;
   handleClose: VoidFunction;
   detail: DetailType;
-  setSubject: React.Dispatch<React.SetStateAction<string | null>>;
+  setSubject: React.Dispatch<React.SetStateAction<string>>;
 };
 
 type ModalProps = {
@@ -34,7 +34,7 @@ type EditModalProps = {
   detail: DetailType;
   setEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setDetail: React.Dispatch<React.SetStateAction<DetailType>>;
-  setSubject: React.Dispatch<React.SetStateAction<string | null>>;
+  setSubject: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const NormalModal = ({ handleClose, detail, setEdit }: ModalProps) => {
