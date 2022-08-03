@@ -3,9 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Top from './components/pages/Top';
+// import Top from './components/pages/Top';
+import { Top, Authentication } from './components/pages';
 
 function App() {
+  const userInfo = null;
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -22,7 +24,10 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Top></Top>
+      {userInfo
+        ? <Top></Top>
+        : <Authentication></Authentication>}
+      {/* <Top></Top> */}
     </div>
   );
 }
