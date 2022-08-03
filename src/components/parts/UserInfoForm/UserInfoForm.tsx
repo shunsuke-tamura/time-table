@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AuthInfoType } from '../../pages/Authentication';
+import { AuthInfoType, AuthMode } from '../../pages/Authentication';
 
 import './UserInfoForm.css'
 
@@ -8,9 +8,10 @@ import Button from 'react-bootstrap/Button';
 
 type Props = {
   setAuthInfo: React.Dispatch<React.SetStateAction<AuthInfoType>>;
+  authMode: AuthMode;
 }
 
-const UserInfoForm = ({ setAuthInfo }: Props) => {
+const UserInfoForm = ({ setAuthInfo, authMode }: Props) => {
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -35,10 +36,13 @@ const UserInfoForm = ({ setAuthInfo }: Props) => {
         <Form.Control placeholder="学籍番号" required />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formName">
-        <Form.Label>名前</Form.Label>
-        <Form.Control placeholder="名前" required />
-      </Form.Group>
+      {authMode === AuthMode.SignUp
+        && (
+          <Form.Group className="mb-3" controlId="formName">
+            <Form.Label>名前</Form.Label>
+            <Form.Control placeholder="名前" required />
+          </Form.Group>
+        )}
 
       <Form.Group className="mb-3" controlId="formPassword">
         <Form.Label>Password</Form.Label>
