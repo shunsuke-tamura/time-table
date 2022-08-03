@@ -3,6 +3,8 @@ import { AuthInfoType, AuthMode } from '../../pages/Authentication';
 
 import './UserInfoForm.css'
 
+import { GetAuthInfo, AuthCheck, AuthCheckStat } from '../../../lib/authentication';
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -12,6 +14,7 @@ type Props = {
 }
 
 const UserInfoForm = ({ setAuthInfo, authMode }: Props) => {
+  const [authStat, setAuthStat] = useState(AuthCheckStat.OK)
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -19,18 +22,36 @@ const UserInfoForm = ({ setAuthInfo, authMode }: Props) => {
     if (form.checkValidity() === false) {
       event.stopPropagation();
       setValidated(true);
+      return
     }
-    else {
-      const authInfo: AuthInfoType = {
-        id: event.target.formId.value,
-        name: event.target.formName.value,
-        password: event.target.formPassword.value
+
+    let authInfo: AuthInfoType = {
+      id: event.target.formId.value,
+      name: authMode === AuthMode.SignUp
+        ? event.target.formName.value
+        : "",
+      password: event.target.formPassword.value
+    }
+    if (authMode === AuthMode.Login) {
+      const checkRes: AuthCheckStat = AuthCheck(authInfo)
+      if (checkRes === AuthCheckStat.IdNotFound) {
+        setAuthStat(AuthCheckStat.IdNotFound)
+        return
       }
-      setAuthInfo(authInfo)
+      if (checkRes === AuthCheckStat.PassDoNotMatch) {
+        setAuthStat(AuthCheckStat.PassDoNotMatch)
+        return
+      }
+      authInfo = GetAuthInfo(authInfo)
     }
+    setAuthInfo(authInfo)
   };
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      {authStat === AuthCheckStat.IdNotFound
+        && <p className='alertMsg'>学籍番号が登録されていません</p>}
+      {authStat === AuthCheckStat.PassDoNotMatch
+        && <p className='alertMsg'>パスワードが一致しません</p>}
       <Form.Group className="mb-3" controlId="formId">
         <Form.Label>学籍番号</Form.Label>
         <Form.Control placeholder="学籍番号" required />
