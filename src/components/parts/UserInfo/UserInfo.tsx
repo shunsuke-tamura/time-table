@@ -3,16 +3,20 @@ import Stack from 'react-bootstrap/Stack';
 
 import './UserInfo.css'
 
-type Props = {
-  id:   string,
-  name: string
+export type UserInfoType = {
+  id:   string;
+  name: string;
 }
 
-const UserInfo = ({ id, name }: Props) => {
+type Props = {
+  userInfo: UserInfoType
+}
+
+const UserInfo = ({ userInfo }: Props) => {
   return (
     <Stack direction="horizontal" gap={3}>
-      <div className='info'>学籍番号: {id}</div>
-      <div className='info'>氏名: {name}</div>
+      <div className='info'>学籍番号: {userInfo.id}</div>
+      <div className='info'>氏名: {userInfo.name}</div>
       <Button variant="info">ログアウト</Button>
     </Stack>
   )

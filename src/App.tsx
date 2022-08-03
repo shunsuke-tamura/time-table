@@ -1,13 +1,19 @@
-import React from 'react';
+import { useState } from 'react';
 import logo from './logo.svg';
+import { UserInfoType } from './components/parts/UserInfo/UserInfo';
 import './App.css';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import Top from './components/pages/Top';
 import { Top, Authentication } from './components/pages';
 
 function App() {
-  const userInfo = null;
+  const userInfo: UserInfoType = {
+    id: "",
+    name: ""
+  }
+  const [UserInfo, setUserInfo] = useState(userInfo)
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -24,9 +30,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-      {userInfo
-        ? <Top></Top>
-        : <Authentication></Authentication>}
+      {UserInfo.id === ""
+        ? <Authentication setUserInfo={setUserInfo}></Authentication>
+        : <Top userInfo={UserInfo}></Top>}
       {/* <Top></Top> */}
     </div>
   );

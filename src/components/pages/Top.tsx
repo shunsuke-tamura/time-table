@@ -1,11 +1,16 @@
 import { TimeTable, UserInfo } from "../parts";
+import { UserInfoType } from "../parts/UserInfo/UserInfo";
 import "./Top.css"
 
-const Top = () => {
+type Props = {
+  userInfo: UserInfoType;
+}
+
+const Top = ({ userInfo }: Props) => {
   return (
     <div className="topWraper">
       <div className="userInfo">
-        <UserInfo id="20238264" name="hogefuga"></UserInfo>
+        <UserInfo userInfo={userInfo}></UserInfo>
       </div>
       <div className="timeTableWraper">
         <TimeTable></TimeTable>
