@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     readTimeTableDB()
     readUserDataDB()
-  }, [])
+  }, [UserInfo])
   return (
     <div className="App">
       {UserInfo.id === ""
