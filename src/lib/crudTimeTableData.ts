@@ -11,7 +11,7 @@ export type dbDataType = {
 let dbData: dbDataType
 
 export const readTimeTableDB = async (): Promise<boolean> => {
-  const res = await fetch("/db/timeTable.json")
+  const res = await fetch("./db/timeTable.json")
   dbData = await res.json()
   return dbData 
     ? true
@@ -21,7 +21,7 @@ export const readTimeTableDB = async (): Promise<boolean> => {
 export const createTimeTableData = (userId: string) => {
   const newData: ({id: string} & timeTableDataType) = initTimeTableData
   dbData.datas.push(newData)
-  fetch('/timeTable', {
+  fetch('./php/timeTable', {
     method: 'post', 
     headers: { 
       'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ export const updateTimeTableData = (userId: string, periodId: number, detail: De
   const targetRow: CellDataType[] = [...dbData.datas[targetDataIdx][rowNum as keyof timeTableDataType]]
   const targetCellIdx: number = targetRow.findIndex(el => el.id === periodId)
   dbData.datas[targetDataIdx][rowNum as keyof timeTableDataType][targetCellIdx] = afterData
-  fetch('/timeTable', {
+  fetch('./php/timeTable', {
     method: 'post', 
     headers: { 
       'Content-Type': 'application/json',

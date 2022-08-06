@@ -6,7 +6,7 @@ type UserDataType = {
 let dbData: UserDataType
 
 export const readUserDataDB = async (): Promise<boolean> => {
-  const res = await fetch("/db/userData.json")
+  const res = await fetch("./db/userData.json")
   dbData = await res.json()
   return dbData 
     ? true
@@ -44,7 +44,7 @@ export const SaveNewUser = async (userInfo: AuthInfoType): Promise<AuthCheckStat
   const newDBData: UserDataType = {
     users: [...dbData.users, userInfo]
   }
-  const res = await fetch('/userData', {
+  const res = await fetch('./php/userData', {
     method: 'post', 
     headers: { 
       'Content-Type': 'application/json',
