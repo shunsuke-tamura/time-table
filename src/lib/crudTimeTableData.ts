@@ -19,7 +19,8 @@ export const readTimeTableDB = async (): Promise<boolean> => {
 }
 
 export const createTimeTableData = (userId: string) => {
-  const newData: ({id: string} & timeTableDataType) = initTimeTableData
+  let newData: ({id: string} & timeTableDataType) = initTimeTableData
+  newData.id = userId
   dbData.datas.push(newData)
   fetch('./php/timeTable', {
     method: 'post', 
