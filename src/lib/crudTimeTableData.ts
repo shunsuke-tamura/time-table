@@ -2,8 +2,8 @@ import { DetailType } from "../components/parts/TimeTable/DetailModal";
 import { CellDataType } from "../components/parts/TimeTable/Cell";
 import { timeTableDataType } from "../components/parts/TimeTable/TimeTable";
 
-import timeTableData from "../db/timeTable.json"
-import initTimeTableData from "../db/initTimeTable.json"
+import timeTableData from "../../db/timeTable.json"
+import initTimeTableData from "../../db/initTimeTable.json"
 
 
 export type dbDataType = {

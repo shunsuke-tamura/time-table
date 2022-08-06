@@ -1,5 +1,5 @@
 import { AuthInfoType } from "../components/pages/Authentication"
-import userData from '../db/userData.json'
+import userData from '../../db/userData.json'
 
 type UserDataType = {
   users: AuthInfoType[];
