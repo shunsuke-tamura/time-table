@@ -1,11 +1,14 @@
 import { DetailType } from "../components/parts/TimeTable/DetailModal";
-import { dbDataType } from "../components/pages/Top";
 import { CellDataType } from "../components/parts/TimeTable/Cell";
 import { timeTableDataType } from "../components/parts/TimeTable/TimeTable";
 
 import timeTableData from "../db/timeTable.json"
 import initTimeTableData from "../db/initTimeTable.json"
 
+
+export type dbDataType = {
+  datas: ({id: string} & timeTableDataType)[]
+}
 let dbData: dbDataType = timeTableData
 
 export const createTimeTableData = (userId: string) => {
@@ -19,6 +22,12 @@ export const createTimeTableData = (userId: string) => {
     },
     body: JSON.stringify(dbData)
   })
+}
+
+export const readTimeTableData = (userId: string): timeTableDataType => {
+  const dataIdx: number = dbData.datas.findIndex(el => el.id === userId);
+  const data: timeTableDataType = dbData.datas[dataIdx];
+  return data
 }
 
 export const updateTimeTableData = (userId: string, periodId: number, detail: DetailType) => {

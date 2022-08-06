@@ -2,13 +2,8 @@ import { TimeTable, UserInfo } from "../parts";
 import { UserInfoType } from "../parts/UserInfo/UserInfo";
 import { DetailType } from '../parts/TimeTable/DetailModal';
 import { timeTableDataType } from "../parts/TimeTable/TimeTable";
-import timeTableData from '../../db/timeTable.json'
-import initTimeTableData from '../../db/initTimeTable.json'
 import "./Top.css"
-
-export type dbDataType = {
-  datas: ({id: string} & timeTableDataType)[]
-}
+import { readTimeTableData } from "../../lib/crudTimeTableData";
 
 type Props = {
   userInfo: UserInfoType;
@@ -16,9 +11,7 @@ type Props = {
 }
 
 const Top = ({ userInfo, setUserInfo }: Props) => {
-  const dbData: dbDataType = timeTableData;
-  const dataIdx: number = dbData.datas.findIndex(el => el.id === userInfo.id);
-  const data: timeTableDataType = dbData.datas[dataIdx];
+  const data: timeTableDataType = readTimeTableData(userInfo.id)
   return (
     <div className="topWraper">
       <div className="userInfo">
