@@ -4,13 +4,18 @@ import { DetailType } from './DetailModal';
 
 import './Cell.css'
 
-type Props = {
+export type CellDataType = {
+  id: number;
   subject: string;
   detail: DetailType;
-  periodId: number;
+}
+
+type Props = {
+  data: CellDataType
 };
 
-const Cell = ({ subject, detail, periodId }: Props) => {
+const Cell = ({ data }: Props) => {
+  const {subject, detail, id}: CellDataType = data
   const [Subject, setSubject] = useState(subject)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -23,7 +28,7 @@ const Cell = ({ subject, detail, periodId }: Props) => {
       }}>
         {Subject}
       </div>
-      <DetailModal show={show} handleClose={handleClose} periodId={periodId} detail={detail} setSubject={setSubject}></DetailModal>
+      <DetailModal show={show} handleClose={handleClose} periodId={id} detail={detail} setSubject={setSubject}></DetailModal>
     </>
   )
 }
