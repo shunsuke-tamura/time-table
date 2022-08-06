@@ -3,7 +3,7 @@ import { AuthInfoType, AuthMode } from '../../pages/Authentication';
 
 import './UserInfoForm.css'
 
-import { GetAuthInfo, AuthCheck, AuthCheckStat } from '../../../lib/authentication';
+import { GetAuthInfo, AuthCheck, AuthCheckStat, SaveNewUser } from '../../../lib/authentication';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -16,7 +16,8 @@ type Props = {
 const UserInfoForm = ({ setAuthInfo, authMode }: Props) => {
   const [authStat, setAuthStat] = useState(AuthCheckStat.OK)
   const [validated, setValidated] = useState(false);
-  const handleSubmit = (event: any) => {
+
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -44,6 +45,18 @@ const UserInfoForm = ({ setAuthInfo, authMode }: Props) => {
       }
       authInfo = GetAuthInfo(authInfo)
     }
+    else {
+      const res: AuthCheckStat = await SaveNewUser(authInfo)
+      console.log(res)
+      if (res === AuthCheckStat.FailedToRegister) {
+        console.log("Cannot Save New User")
+        return
+      }
+      if (res === AuthCheckStat.AlreadyRegisteredUser) {
+        setAuthStat(AuthCheckStat.AlreadyRegisteredUser)
+        return
+      }
+    }
     setAuthInfo(authInfo)
   };
   return (
@@ -52,6 +65,8 @@ const UserInfoForm = ({ setAuthInfo, authMode }: Props) => {
         && <p className='alertMsg'>学籍番号が登録されていません</p>}
       {authStat === AuthCheckStat.PassDoNotMatch
         && <p className='alertMsg'>パスワードが一致しません</p>}
+      {authStat === AuthCheckStat.AlreadyRegisteredUser
+        && <p className='alertMsg'>この学籍番号は登録されています</p>}
       <Form.Group className="mb-3" controlId="formId">
         <Form.Label>学籍番号</Form.Label>
         <Form.Control placeholder="学籍番号" required />
