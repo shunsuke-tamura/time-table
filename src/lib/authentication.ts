@@ -1,10 +1,17 @@
 import { AuthInfoType } from "../components/pages/Authentication"
-import userData from '../db/userData.json'
 
 type UserDataType = {
   users: AuthInfoType[];
 }
-const dbData: UserDataType = userData
+let dbData: UserDataType
+
+export const readUserDataDB = async (): Promise<boolean> => {
+  const res = await fetch("/db/userData.json")
+  dbData = await res.json()
+  return dbData 
+    ? true
+    : false
+}
 
 export enum AuthCheckStat {
   OK,

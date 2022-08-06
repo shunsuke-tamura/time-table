@@ -2,14 +2,21 @@ import { DetailType } from "../components/parts/TimeTable/DetailModal";
 import { CellDataType } from "../components/parts/TimeTable/Cell";
 import { timeTableDataType } from "../components/parts/TimeTable/TimeTable";
 
-import timeTableData from "../db/timeTable.json"
-import initTimeTableData from "../db/initTimeTable.json"
+import initTimeTableData from "./initTimeTable.json"
 
 
 export type dbDataType = {
   datas: ({id: string} & timeTableDataType)[]
 }
-let dbData: dbDataType = timeTableData
+let dbData: dbDataType
+
+export const readTimeTableDB = async (): Promise<boolean> => {
+  const res = await fetch("/db/timeTable.json")
+  dbData = await res.json()
+  return dbData 
+    ? true
+    : false
+}
 
 export const createTimeTableData = (userId: string) => {
   const newData: ({id: string} & timeTableDataType) = initTimeTableData
