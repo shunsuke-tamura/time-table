@@ -12,9 +12,10 @@ type dbDataType = {
 
 type Props = {
   userInfo: UserInfoType;
+  setUserInfo: React.Dispatch<React.SetStateAction<UserInfoType>>;
 }
 
-const Top = ({ userInfo }: Props) => {
+const Top = ({ userInfo, setUserInfo }: Props) => {
   let data: timeTableDataType;
   const dbData: dbDataType = timeTableData;
   const dataIdx: number = dbData.datas.findIndex(el => el.id === userInfo.id);
@@ -27,7 +28,7 @@ const Top = ({ userInfo }: Props) => {
   return (
     <div className="topWraper">
       <div className="userInfo">
-        <UserInfo userInfo={userInfo}></UserInfo>
+        <UserInfo userInfo={userInfo} setUserInfo={setUserInfo}></UserInfo>
       </div>
       <div className="timeTableWraper">
         <TimeTable data={data}></TimeTable>

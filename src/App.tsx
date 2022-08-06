@@ -32,7 +32,7 @@ function App() {
       </header> */}
       {UserInfo.id === ""
         ? <Authentication setUserInfo={setUserInfo}></Authentication>
-        : <Top userInfo={UserInfo}></Top>}
+        : <Top userInfo={UserInfo} setUserInfo={setUserInfo}></Top>}
       {/* <Top></Top> */}
     </div>
   );
