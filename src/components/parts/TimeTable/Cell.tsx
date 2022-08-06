@@ -15,8 +15,8 @@ type Props = {
   data: CellDataType;
 };
 
-const Cell = ({userId, data }: Props) => {
-  const {subject, detail, id}: CellDataType = data
+const Cell = ({ userId, data }: Props) => {
+  const { subject, detail, id }: CellDataType = data
   const [Subject, setSubject] = useState(subject)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -29,7 +29,14 @@ const Cell = ({userId, data }: Props) => {
       }}>
         {Subject}
       </div>
-      <DetailModal show={show} handleClose={handleClose} userId={userId} periodId={id} detail={detail} setSubject={setSubject}></DetailModal>
+      <DetailModal
+        show={show} 
+        handleClose={handleClose} 
+        userId={userId} 
+        periodId={id} 
+        detail={detail} 
+        setSubject={setSubject} 
+      />
     </>
   )
 }

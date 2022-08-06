@@ -1,6 +1,5 @@
 import { TimeTable, UserInfo } from "../parts";
 import { UserInfoType } from "../parts/UserInfo/UserInfo";
-import { DetailType } from '../parts/TimeTable/DetailModal';
 import { timeTableDataType } from "../parts/TimeTable/TimeTable";
 import "./Top.css"
 import { readTimeTableData } from "../../lib/crudTimeTableData";

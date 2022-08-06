@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import ToDo from './ToDo';
 import { ToDo, EditToDo, ToDoType } from './ToDo';
 import './DetailModal.css';
 
@@ -125,12 +124,17 @@ const EditModal = ({ periodId, detail, setEdit, setDetail, setSubject }: EditMod
           <h5>ToDo</h5>
           <Stack direction='vertical'>
             {inputTodos.map((value, _) =>
-              <EditToDo todo={value} todos={inputValues["todos"]} setInputTodos={setInputTodos} key={value["id"]}></EditToDo>
+              <EditToDo 
+                todo={value} 
+                todos={inputValues["todos"]} 
+                setInputTodos={setInputTodos} 
+                key={value["id"]}
+              ></EditToDo>
             )}
             <BsFillPlusCircleFill
               className='plusTodo'
               onClick={() => {
-                const newId: string = inputTodos.length != 0
+                const newId: string = inputTodos.length !== 0
                   ? String(Number(String(inputTodos[inputTodos.length - 1]["id"]).substring(2)) + 1)
                   : String(0)
                 const newTodo: ToDoType = {

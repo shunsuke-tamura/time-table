@@ -32,7 +32,7 @@ export const GetAuthInfo = (loginInfo: AuthInfoType): AuthInfoType => {
 
 export const SaveNewUser = async (userInfo: AuthInfoType): Promise<AuthCheckStat> => {
   const userIdx: number = dbData.users.findIndex(el => el.id === userInfo.id)
-  if (userIdx != -1) { return AuthCheckStat.AlreadyRegisteredUser }
+  if (userIdx !== -1) { return AuthCheckStat.AlreadyRegisteredUser }
 
   const newDBData: UserDataType = {
     users: [...dbData.users, userInfo]

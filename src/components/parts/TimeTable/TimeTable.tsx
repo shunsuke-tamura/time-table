@@ -1,5 +1,4 @@
 import Cell, { CellDataType } from './Cell'
-import { DetailType } from './DetailModal';
 
 import Table from 'react-bootstrap/Table';
 
