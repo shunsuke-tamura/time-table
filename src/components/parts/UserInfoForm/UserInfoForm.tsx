@@ -4,6 +4,7 @@ import { AuthInfoType, AuthMode } from '../../pages/Authentication';
 import './UserInfoForm.css'
 
 import { GetAuthInfo, AuthCheck, AuthCheckStat, SaveNewUser } from '../../../lib/authentication';
+import { createTimeTableData } from '../../../lib/crudTimeTableData';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -56,6 +57,7 @@ const UserInfoForm = ({ setAuthInfo, authMode }: Props) => {
         setAuthStat(AuthCheckStat.AlreadyRegisteredUser)
         return
       }
+      createTimeTableData(authInfo.id)
     }
     setAuthInfo(authInfo)
   };

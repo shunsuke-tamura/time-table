@@ -16,15 +16,9 @@ type Props = {
 }
 
 const Top = ({ userInfo, setUserInfo }: Props) => {
-  let data: timeTableDataType;
   const dbData: dbDataType = timeTableData;
   const dataIdx: number = dbData.datas.findIndex(el => el.id === userInfo.id);
-  if (dataIdx === -1) {
-    data = initTimeTableData;
-  }
-  else {
-    data = dbData.datas[dataIdx];
-  }
+  const data: timeTableDataType = dbData.datas[dataIdx];
   return (
     <div className="topWraper">
       <div className="userInfo">

@@ -4,8 +4,22 @@ import { CellDataType } from "../components/parts/TimeTable/Cell";
 import { timeTableDataType } from "../components/parts/TimeTable/TimeTable";
 
 import timeTableData from "../db/timeTable.json"
+import initTimeTableData from "../db/initTimeTable.json"
 
 let dbData: dbDataType = timeTableData
+
+export const createTimeTableData = (userId: string) => {
+  const newData: ({id: string} & timeTableDataType) = initTimeTableData
+  dbData.datas.push(newData)
+  fetch('/timeTable', {
+    method: 'post', 
+    headers: { 
+      'Content-Type': 'application/json',
+      'mode': 'cors'
+    },
+    body: JSON.stringify(dbData)
+  })
+}
 
 export const updateTimeTableData = (userId: string, periodId: number, detail: DetailType) => {
   const afterData: CellDataType = {
