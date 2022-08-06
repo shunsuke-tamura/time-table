@@ -48,7 +48,6 @@ const UserInfoForm = ({ setAuthInfo, authMode }: Props) => {
     }
     else {
       const res: AuthCheckStat = await SaveNewUser(authInfo)
-      console.log(res)
       if (res === AuthCheckStat.FailedToRegister) {
         console.log("Cannot Save New User")
         return

@@ -48,7 +48,6 @@ export const updateTimeTableData = (userId: string, periodId: number, detail: De
   const targetRow: CellDataType[] = [...dbData.datas[targetDataIdx][rowNum as keyof timeTableDataType]]
   const targetCellIdx: number = targetRow.findIndex(el => el.id === periodId)
   dbData.datas[targetDataIdx][rowNum as keyof timeTableDataType][targetCellIdx] = afterData
-  console.log(JSON.stringify(dbData))
   fetch('/timeTable', {
     method: 'post', 
     headers: { 
