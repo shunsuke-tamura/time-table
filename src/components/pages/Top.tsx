@@ -6,7 +6,7 @@ import timeTableData from '../../db/timeTable.json'
 import initTimeTableData from '../../db/initTimeTable.json'
 import "./Top.css"
 
-type dbDataType = {
+export type dbDataType = {
   datas: ({id: string} & timeTableDataType)[]
 }
 
@@ -31,7 +31,7 @@ const Top = ({ userInfo, setUserInfo }: Props) => {
         <UserInfo userInfo={userInfo} setUserInfo={setUserInfo}></UserInfo>
       </div>
       <div className="timeTableWraper">
-        <TimeTable data={data}></TimeTable>
+        <TimeTable id={userInfo.id} data={data}></TimeTable>
       </div>
     </div>
   )

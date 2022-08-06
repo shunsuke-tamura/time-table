@@ -14,10 +14,11 @@ export type timeTableDataType = {
 }
 
 type Props = {
+  id: string;
   data: timeTableDataType;
 }
 
-const TimeTable = ({ data }: Props) => {
+const TimeTable = ({ id,data }: Props) => {
   return (
     <Table bordered>
       <thead>
@@ -36,43 +37,43 @@ const TimeTable = ({ data }: Props) => {
         <tr>
           <th>1</th>
           {data[1 as keyof timeTableDataType].map((value: CellDataType) =>
-            <th key={value["id"]}><Cell data={value} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell userId={id} data={value} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>2</th>
           {data[2 as keyof timeTableDataType].map((value: CellDataType) =>
-            <th key={value["id"]}><Cell data={value} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell userId={id} data={value} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>3</th>
           {data[3 as keyof timeTableDataType].map((value: CellDataType) =>
-            <th key={value["id"]}><Cell data={value} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell userId={id} data={value} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>4</th>
           {data[4 as keyof timeTableDataType].map((value: CellDataType) =>
-            <th key={value["id"]}><Cell data={value} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell userId={id} data={value} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>5</th>
           {data[5 as keyof timeTableDataType].map((value: CellDataType) =>
-            <th key={value["id"]}><Cell data={value} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell userId={id} data={value} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>6</th>
           {data[6 as keyof timeTableDataType].map((value: CellDataType) =>
-            <th key={value["id"]}><Cell data={value} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell userId={id} data={value} key={value["id"]}></Cell></th>
           )}
         </tr>
         <tr>
           <th>7</th>
           {data[7 as keyof timeTableDataType].map((value: CellDataType) =>
-            <th key={value["id"]}><Cell data={value} key={value["id"]}></Cell></th>
+            <th key={value["id"]}><Cell userId={id} data={value} key={value["id"]}></Cell></th>
           )}
         </tr>
       </tbody>

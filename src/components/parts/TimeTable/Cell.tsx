@@ -11,10 +11,11 @@ export type CellDataType = {
 }
 
 type Props = {
-  data: CellDataType
+  userId: string;
+  data: CellDataType;
 };
 
-const Cell = ({ data }: Props) => {
+const Cell = ({userId, data }: Props) => {
   const {subject, detail, id}: CellDataType = data
   const [Subject, setSubject] = useState(subject)
   const [show, setShow] = useState(false);
@@ -28,7 +29,7 @@ const Cell = ({ data }: Props) => {
       }}>
         {Subject}
       </div>
-      <DetailModal show={show} handleClose={handleClose} periodId={id} detail={detail} setSubject={setSubject}></DetailModal>
+      <DetailModal show={show} handleClose={handleClose} userId={userId} periodId={id} detail={detail} setSubject={setSubject}></DetailModal>
     </>
   )
 }

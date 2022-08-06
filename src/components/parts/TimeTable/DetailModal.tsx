@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import ToDo from './ToDo';
 import { ToDo, EditToDo, ToDoType } from './ToDo';
 import './DetailModal.css';
+
+import { updateTimeTableData } from '../../../lib/crudTimeTableData';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -20,6 +22,7 @@ export type DetailType = {
 type Props = {
   show: boolean;
   handleClose: VoidFunction;
+  userId: string;
   periodId: number;
   detail: DetailType;
   setSubject: React.Dispatch<React.SetStateAction<string>>;
@@ -75,7 +78,7 @@ const NormalModal = ({ handleClose, detail, setEdit }: ModalProps) => {
   )
 }
 
-const EditModal = ({periodId, detail, setEdit, setDetail, setSubject }: EditModalProps) => {
+const EditModal = ({ periodId, detail, setEdit, setDetail, setSubject }: EditModalProps) => {
   const [inputSubject, setInputSubject] = useState(detail["subject"])
   const [inputRoom, setInputRoom] = useState(detail["room"])
   const [inputProfessor, setInputProfessor] = useState(detail["professor"])
@@ -162,13 +165,16 @@ const EditModal = ({periodId, detail, setEdit, setDetail, setSubject }: EditModa
 }
 
 
-const DetailModal = ({ show, handleClose, periodId, detail, setSubject }: Props) => {
+const DetailModal = ({ show, handleClose, userId, periodId, detail, setSubject }: Props) => {
   const [editMode, setEditMode] = useState(false)
   const [Detail, setDetail] = useState(detail)
   const onClose = () => {
     handleClose();
     setEditMode(false);
   }
+  useEffect(() => {
+    updateTimeTableData(userId, periodId, Detail)
+  }, [Detail])
   return (
     <Modal show={show} onHide={onClose} centered>
       {editMode
